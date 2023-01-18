@@ -43,8 +43,8 @@ const options = {
     time_24hr: true,
     defaultDate: new Date(),
     minuteIncrement: 1,
-    onClose(selectedDates) {
-        validTime = selectedDates[0].getTime();
+    onClose([selectedDates]) {
+        validTime = selectedDates.getTime();
         if (validTime > Date.now()) {
             btnStart.removeAttribute('disabled')
         } else{Notify.failure('Please choose a date in the future')}
@@ -63,23 +63,20 @@ function onClick (evt){
 if (totalDate < 1000) {
     clearInterval(interval)
 }
-function changeContent ({days, hours, minutes, seconds} = timeCalc){
+changeContent(timeCalc);
+changeContent();
+},1000)
+
+}
+
+
+function changeContent (obj){
+ const {days,hours,minutes,seconds} = obj;
     timeDays.textContent = pad(days);
     timeHours.textContent = pad(hours);
     timeMinutes.textContent = pad(minutes);
     timeSeconds.textContent = pad(seconds);
 }
-
-changeContent();
-
-
-
-    },1000)
-
-}
-
-
-
 
 
 

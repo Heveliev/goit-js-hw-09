@@ -6,12 +6,12 @@ const btnStart = document.querySelector('[data-start]');
 const btnStop = document.querySelector('[data-stop]');
 let timerId = null;
 
-btnStop.toggleAttribute('disabled');
+onToggle(btnStop);
 
 btnStart.addEventListener('click', onStart)
 function onStart(){
-    btnStart.toggleAttribute('disabled');
-    btnStop.removeAttribute('disabled');
+    onToggle(btnStart);
+    onRemove(btnStop);
 
  timerId = setInterval(()=>{
         bodyHtml.style.backgroundColor = `${getRandomHexColor()}`},1000);
@@ -20,10 +20,15 @@ function onStart(){
 
 btnStop.addEventListener('click', 
 ()=>{
-    btnStart.removeAttribute('disabled');
-    btnStop.toggleAttribute('disabled');
+    onRemove(btnStart);
+    onToggle(btnStop);
     clearInterval(timerId);
 })
 
-
+function onToggle (evt){
+evt.toggleAttribute('disabled')
+}
+function onRemove(evt) {
+  evt.removeAttribute('disabled');
+}
 
