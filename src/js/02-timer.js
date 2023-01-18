@@ -64,18 +64,19 @@ if (totalDate < 1000) {
     clearInterval(interval)
 }
 changeContent(timeCalc);
-changeContent();
+
 },1000)
 
 }
 
 
 function changeContent (obj){
- const {days,hours,minutes,seconds} = obj;
+    const {days,hours,minutes,seconds} = obj;
     timeDays.textContent = pad(days);
     timeHours.textContent = pad(hours);
     timeMinutes.textContent = pad(minutes);
     timeSeconds.textContent = pad(seconds);
+
 }
 
 
